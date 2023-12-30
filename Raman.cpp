@@ -3,9 +3,30 @@
 
 #include <iostream>
 
+#include "nlohmann/json.hpp"
+#include "Serealization.h"
+#include "Fight.h"
+
+
 int main()
 {
-    std::cout << "Hello World!\n";
+    
+    Serealization processor;
+    processor.PrintObjectsWithGreaterThan(50,0);
+    // 
+    // 
+    // 
+    //Fight::printMaps();
+    //cout << "\nNumber of tanks in My Map: " << Fight::myMap["Tanks"] << endl;
+    //cout << "Number of drones in Opponent's Map: " << Fight::opponentMap["Drones"] << endl;
+    // 
+    // 
+    // 
+
+
+
+
+    return 0;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

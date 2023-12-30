@@ -1,0 +1,42 @@
+{
+  "Mines": {
+    "distance": 20,
+    "caliber": 155
+  },
+  "MLRS": {
+    "distance": 30,
+    "caliber": 155
+  },
+  "Tanks": {
+    "distance": 30,
+    "caliber": 155
+  },
+  "Artillery": {
+    "distance": 50,
+    "caliber": 155
+  },
+  "Shooter": {
+    "distance": 60,
+    "caliber": 155
+  },
+  "Aviation": {
+    "distance": 80,
+    "caliber": 155
+  },
+  "Mortars": {
+    "distance": 70,
+    "caliber": 155
+  },
+  "Armored vehicles": {
+    "distance": 30,
+    "caliber": 155
+  },
+  "Anti-tank missile": {
+    "distance": 90,
+    "caliber": 155
+  },
+  "Drones": {
+    "distance": 55,
+    "caliber": 155
+  }
+}
