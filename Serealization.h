@@ -10,11 +10,9 @@ using namespace std;
 
 class Serealization{
 public:
-    Serealization() { Check(); }
-
-    void PrintObjectsWithGreaterThan(int distance, int caliber);
-
-private:
+    Serealization(string data_name) { Check(data_name); }
     json data;
-    void Check();
+private:
+    void Check(string data_name);
+
 };

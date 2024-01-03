@@ -4,25 +4,9 @@
 
 using json = nlohmann::json;
 
-void Ser::PrintObjectsWithGreaterThan(int distance, int caliber) {
+void Ser::Check(string str) {
     try {
-        for (auto it = data.begin(); it != data.end(); ++it) {
-            const auto& item = *it;
-            const string& objectName = it.key();
-
-            if ((item["distance"] >= distance) && (item["caliber"] >= caliber))
-                //тут фільтр 
-                cout << objectName << endl;            
-        }
-    }
-    catch (const exception& e) {
-        cerr << "Error 123: " << e.what() << endl;
-    }
-}
-
-void Ser::Check() {
-    try {
-        ifstream file("data.json");
+        ifstream file(str);
 
         if (!file.is_open())
             cerr << "Unable to open file." << endl;

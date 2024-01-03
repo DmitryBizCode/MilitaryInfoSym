@@ -2,23 +2,27 @@
   "Tanks": {
     "Swamp": {
       "Drones": 0.3,
+      "Tanks": 30,
       "Shooter": 75,
       "Armored vehicles": 45
     },
     "Plain": {
       "Drones": 0.1,
       "Shooter": 85,
+      "Tanks": 30,
       "Armored vehicles": 50
     }
   },
   "Shooter": {
     "Swamp": {
-      "Drones": 1,
+      "Drones": 2,
+      "Shooter": 50,
       "Tanks": 5,
       "Armored vehicles": 7
     },
     "Plain": {
-      "Drones": 1,
+      "Drones": 2,
+      "Shooter": 50,
       "Tanks": 2,
       "Armored vehicles": 3
     }
@@ -39,12 +43,16 @@
     "Swamp": {
       "Shooter": 60,
       "Tanks": 20,
-      "Drones": 0.7
+      "Drones": 0.9,
+      "Armored vehicles": 30
+
     },
     "Plain": {
       "Shooter": 70,
       "Tanks": 10,
-      "Drones": 0.3
+      "Drones": 0.5,
+      "Armored vehicles": 20
+
     }
   }
 }

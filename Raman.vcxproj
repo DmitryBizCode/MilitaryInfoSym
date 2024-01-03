@@ -128,14 +128,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Fight.cpp" />
+    <ClCompile Include="Filtration.cpp" />
     <ClCompile Include="Raman.cpp" />
     <ClCompile Include="Serealization.cpp" />
     <ClCompile Include="Simulation.cpp" />
+    <ClCompile Include="TextInformation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fight.h" />
+    <ClInclude Include="Filtration.h" />
     <ClInclude Include="Serealization.h" />
     <ClInclude Include="Simulation.h" />
+    <ClInclude Include="TextInformation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

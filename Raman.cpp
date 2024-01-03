@@ -2,17 +2,33 @@
 //
 
 #include <iostream>
-
 #include "nlohmann/json.hpp"
 #include "Serealization.h"
 #include "Fight.h"
-
-
+#include "Filtration.h"
+#include <Windows.h>
+using namespace std;
 int main()
 {
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
+
+
+
+    /*Serealization ser("datainformation.json");
+    int num = 3;
     
-    Serealization processor;
-    processor.PrintObjectsWithGreaterThan(50,0);
+    // Перевіряємо, чи існує вказаний номер у файлі
+    if (ser.data.find(to_string(num)) != ser.data.end()) {
+        json tanks = ser.data[to_string(num)];
+        cout << tanks.dump(4) << endl; // Виводимо вміст вибраного танку у консоль (зі зміщенням 4 пробіли)
+    }
+    else
+        cout << "Такого номеру не знайдено в файлі JSON." << endl;
+        */
+    //Filtration fil("data.json");
+    //fil.PrintObjectsWithGreaterThan(60, 0);
+    //
     // 
     // 
     // 
