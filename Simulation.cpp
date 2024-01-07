@@ -20,4 +20,4 @@ void Simulation::Initialization(int tanks, int shooter, int drones, int vehicles
 	this->drones_Op = drones_Op;
 	this->vehicles_Op = vehicles_Op;
 }
-bool CheckMy
+//bool CheckMy

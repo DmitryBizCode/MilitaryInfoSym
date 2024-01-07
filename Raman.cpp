@@ -13,7 +13,12 @@ int main()
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
 
+    Fight F;
+    F.AddMY(5, 200, 10, 200);   
+    F.AddOP(6, 150, 12, 15);
 
+    F.Parse();
+    F.printMaps();
 
     /*Serealization ser("datainformation.json");
     int num = 3;
