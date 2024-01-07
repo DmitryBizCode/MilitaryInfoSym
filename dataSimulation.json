@@ -31,11 +31,13 @@
     "Swamp": {
       "Shooter": 60,
       "Tanks": 85,
+      "Drones": 0.01,
       "Armored vehicles": 80
     },
     "Plain": {
       "Shooter": 70,
       "Tanks": 60,
+      "Drones": 0.01,
       "Armored vehicles": 60
     }
   },

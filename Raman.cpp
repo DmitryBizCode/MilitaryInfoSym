@@ -18,7 +18,10 @@ int main()
     F.AddOP(6, 150, 12, 15);
 
     F.Parse();
-    F.printMaps();
+    //F.printMaps();
+
+    Fight L;
+    L.printMaps();
 
     /*Serealization ser("datainformation.json");
     int num = 3;

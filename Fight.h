@@ -14,8 +14,8 @@ private:
     static map<string, int> myBase;
     static map<string, int> opponentBase;
 
+    static map<string, int> Neutral;
     void Check_Parse(map<string, int>& myMap, map<string, int>& myBase);
-    //void Check_ParseOp();
 public:
     void Parse();
 
@@ -31,6 +31,16 @@ public:
     void SubstractionOpponentShooter1();
     void SubstractionOpponentDrones1();
     void SubstractionOpponentVehicles1();
+
+    int Get_Shooter_My();
+    int Get_Shooter_Op();
+
+    void Push_To_Neutral_MyBase();
+    void Push_To_Neutral_OpponentBase();
+
+    bool Neutral_Check();
+
+    void Neutral_Allocate();
 
     void printMaps();
 };
