@@ -56,8 +56,8 @@ void F::SubstractionMyShooter1() {
     myMap["Shooter"] -= 1;
 }
 void F::SubstractionMyDrones1() {
-    myMap["Shooter"] += 1;
     myMap["Drones"] -= 1;
+    myMap["Shooter"] += 1;
 }
 void F::SubstractionMyVehicles1() {
     myMap["Armored vehicles"] -= 1;
@@ -69,8 +69,8 @@ void F::SubstractionOpponentShooter1() {
     opponentMap["Shooter"] -= 1;
 }
 void F::SubstractionOpponentDrones1() {
-    opponentMap["Shooter"] += 1;
     opponentMap["Drones"] -= 1;
+    opponentMap["Shooter"] += 1;
 }
 void F::SubstractionOpponentVehicles1() {
     opponentMap["Armored vehicles"] -= 1;
@@ -189,6 +189,12 @@ void F::Push_To_Neutral_OpponentBase() {
 bool F::Neutral_Check() {
     return ((Neutral["Tanks"] + Neutral["Drones"] + Neutral["Armored vehicles"]) > 0) ? true : false;
 }
+bool F::MyTeam_Check() {
+    return ((Neutral["Tanks"] + Neutral["Drones"] + Neutral["Armored vehicles"]) > 0) ? true : false;
+}
+bool F::OpponentTeam_Check() {
+    return ((Neutral["Tanks"] + Neutral["Drones"] + Neutral["Armored vehicles"]) > 0) ? true : false;
+}
 
 //Get
 int F::Get_Shooter_My() {
@@ -197,6 +203,25 @@ int F::Get_Shooter_My() {
 int F::Get_Shooter_Op() {
     return opponentMap["Shooter"];
 }
+int F::Get_Tanks_My() {
+    return myMap["Tanks"];
+}
+int F::Get_Tanks_Op() {
+    return opponentMap["Tanks"];
+}
+int F::Get_Drones_My() {
+    return myMap["Drones"];
+}
+int F::Get_Drones_Op() {
+    return opponentMap["Drones"];
+}
+int F::Get_Vehicles_My() {
+    return myMap["Armored vehicles"];
+}
+int F::Get_Vehicles_Op() {
+    return opponentMap["Armored vehicles"];
+}
+
 
 //Allocate
 void F::Neutral_Allocate() {

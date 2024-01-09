@@ -34,11 +34,19 @@ public:
 
     int Get_Shooter_My();
     int Get_Shooter_Op();
+    int Get_Tanks_My();
+    int Get_Tanks_Op();
+    int Get_Drones_My();
+    int Get_Drones_Op();
+    int Get_Vehicles_My();
+    int Get_Vehicles_Op();
 
     void Push_To_Neutral_MyBase();
     void Push_To_Neutral_OpponentBase();
 
-    bool Neutral_Check();
+    bool Neutral_Check(); 
+    bool MyTeam_Check();
+    bool OpponentTeam_Check();
 
     void Neutral_Allocate();
 

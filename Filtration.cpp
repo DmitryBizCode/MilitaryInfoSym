@@ -17,6 +17,6 @@ void Fi::PrintObjectsWithGreaterThan(int distance, int caliber) {
         }
     }
     catch (const exception& e) {
-        cerr << "Error 123: " << e.what() << endl;
+        cerr << "Error: " << e.what() << endl;
     }
 }
