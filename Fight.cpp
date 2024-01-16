@@ -190,10 +190,10 @@ bool F::Neutral_Check() {
     return ((Neutral["Tanks"] + Neutral["Drones"] + Neutral["Armored vehicles"]) > 0) ? true : false;
 }
 bool F::MyTeam_Check() {
-    return ((Neutral["Tanks"] + Neutral["Drones"] + Neutral["Armored vehicles"]) > 0) ? true : false;
+    return ((myMap["Tanks"] + myMap["Drones"] + myMap["Armored vehicles"] + myMap["Shooter"]) > 0) ? true : false;
 }
 bool F::OpponentTeam_Check() {
-    return ((Neutral["Tanks"] + Neutral["Drones"] + Neutral["Armored vehicles"]) > 0) ? true : false;
+    return ((opponentMap["Tanks"] + opponentMap["Drones"] + opponentMap["Armored vehicles"] + opponentMap["Shooter"]) > 0) ? true : false;
 }
 
 //Get

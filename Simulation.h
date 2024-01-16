@@ -5,13 +5,15 @@ using namespace std;
 #include "Fight.h"
 #include <random>
 
+#include <thread>
+#include <chrono>
 
 class Simulation
 {
 public:
 	Simulation(string str): Weather_conditions(str){}
-	bool Sim(string str);
-	static int Time;
+	bool Sim();
+	int Time = 0;
 private:
 	void Random_Choose_and_Fight(float Tanks, float Shooters, float Drones, float Vehicle, string Name_Fight, string Team);
 	string Weather_conditions;
