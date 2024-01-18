@@ -8,7 +8,7 @@ using namespace std;
 #include <thread>
 #include <chrono>
 
-class Simulation
+class Simulation : protected Fight
 {
 public:
 	Simulation(string str): Weather_conditions(str){}

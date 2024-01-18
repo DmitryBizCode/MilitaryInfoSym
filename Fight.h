@@ -7,22 +7,7 @@ using namespace std;
 
 class Fight
 {
-private:
-    static map<string, int> myMap;
-    static map<string, int> opponentMap;
-
-    static map<string, int> myBase;
-    static map<string, int> opponentBase;
-
-    static map<string, int> Neutral;
-    void Check_Parse(map<string, int>& myMap, map<string, int>& myBase);
-public:
-    void Parse();
-
-
-    void AddMY(int Tanks, int Shooter, int Drones, int vehicles);
-    void AddOP(int Tanks, int Shooter, int Drones, int vehicles);
-
+protected:
     void SubstractionMyTanks1();
     void SubstractionMyShooter1();
     void SubstractionMyDrones1();
@@ -41,15 +26,30 @@ public:
     int Get_Vehicles_My();
     int Get_Vehicles_Op();
 
+    void Neutral_Allocate();
+
     void Push_To_Neutral_MyBase();
     void Push_To_Neutral_OpponentBase();
+private:
+    static map<string, int> myMap;
+    static map<string, int> opponentMap;
+
+    static map<string, int> myBase;
+    static map<string, int> opponentBase;
+
+    static map<string, int> Neutral;
+
+    void Check_Parse(map<string, int>& myMap, map<string, int>& myBase);
+public:
+    void AddMY(int Tanks, int Shooter, int Drones, int vehicles);
+    void AddOP(int Tanks, int Shooter, int Drones, int vehicles);
 
     bool Neutral_Check(); 
     bool MyTeam_Check();
     bool OpponentTeam_Check();
 
-    void Neutral_Allocate();
-
     void printMaps();
+
+    void Parse();
 };
 
