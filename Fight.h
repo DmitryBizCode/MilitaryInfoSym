@@ -26,10 +26,11 @@ protected:
     int Get_Vehicles_My();
     int Get_Vehicles_Op();
 
-    void Neutral_Allocate();
+    bool MyBaseTeam_Check();
+    bool OpponentBaseTeam_Check();
 
-    void Push_To_Neutral_MyBase();
-    void Push_To_Neutral_OpponentBase();
+    void Neutral_Allocate();
+    void Update_Teams();
 private:
     static map<string, int> myMap;
     static map<string, int> opponentMap;
@@ -39,12 +40,13 @@ private:
 
     static map<string, int> Neutral;
 
+    void Push_To_Neutral_Base(map<string, int>& Neutral, map<string, int>& Base);
     void Check_Parse(map<string, int>& myMap, map<string, int>& myBase);
 public:
     void AddMY(int Tanks, int Shooter, int Drones, int vehicles);
     void AddOP(int Tanks, int Shooter, int Drones, int vehicles);
 
-    bool Neutral_Check(); 
+   //bool Neutral_Check(); 
     bool MyTeam_Check();
     bool OpponentTeam_Check();
 

@@ -15,16 +15,22 @@
 using namespace std;
 int main()
 {
+    
+    
     Simulation S("Plain");
     Fight F;
 
     F.AddOP(10, 80, 4, 5);
-    F.AddMY(0, 40, 10, 0);
+    F.AddMY(0, 20, 201, 0);
     F.Parse();
     F.printMaps();
     S.Sim();
     F.printMaps();
-    /*                                                                                                                                                                                                                                                                                                                                                           
+
+
+    /*
+
+
     Serealization file("dataSimulation.json");
     string Name_Fight = "Drones";
     cout << file.data["Drones"]["Swamp"]["Drones"];

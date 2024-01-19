@@ -1,6 +1,11 @@
 #include "Simulation.h"
-bool Simulation::Sim() {
+tuple<bool, int> Simulation::Sim() {
 	Time = 0;
+	random_device rd;  // створення об'єкту для генерації випадкових чисел
+	mt19937 gen(rd()); // використання Mersenne Twister для генерації випадкових чисел
+	uniform_int_distribution<> range(1, 2); // випадкові цілі числа в діапазоні від 1 до 2
+	int random_num = range(gen);
+
 	while (MyTeam_Check() && OpponentTeam_Check())
 	{
 		Time++;
@@ -8,55 +13,100 @@ bool Simulation::Sim() {
 		//shooter
 		for (int i = 0; (i <= Get_Shooter_My() || i <= Get_Shooter_Op()); i++)
 		{
-			if (i <= Get_Shooter_My())			
-				Random_Choose_and_Fight(15, 50, 5, 30, "Shooter", "My");			
-			if (i <= Get_Shooter_Op())			
-				Random_Choose_and_Fight(15, 50, 5, 30, "Shooter", "Op");			
+			random_num = range(gen);
+			if (random_num == 1)
+			{
+				if (i <= Get_Shooter_My())
+					Random_Choose_and_Fight(15, 50, 5, 30, "Shooter", "My");
+				if (i <= Get_Shooter_Op())
+					Random_Choose_and_Fight(15, 50, 5, 30, "Shooter", "Op");
+			}
+			else {
+				if (i <= Get_Shooter_Op())
+					Random_Choose_and_Fight(15, 50, 5, 30, "Shooter", "Op");
+				if (i <= Get_Shooter_My())
+					Random_Choose_and_Fight(15, 50, 5, 30, "Shooter", "My");
+			}
 		}
 		//Drones
 		if (Time % 4 == 0)
 		{
 			while (Get_Drones_My() > 0 || Get_Drones_Op() > 0)
 			{
-				if (Get_Drones_My() > 0)
+				random_num = range(gen);
+				if (random_num == 1)
 				{
-					Random_Choose_and_Fight(55, 9.5, 0.5, 25, "Drones", "My");
-					SubstractionMyDrones1();
+					if (Get_Drones_My() > 0)
+					{
+						Random_Choose_and_Fight(55, 9.5, 0.5, 25, "Drones", "My");
+						SubstractionMyDrones1();
+					}
+					if (Get_Drones_Op() > 0)
+					{
+						Random_Choose_and_Fight(55, 9.5, 0.5, 25, "Drones", "Op");
+						SubstractionOpponentDrones1();
+					}
 				}
-				if (Get_Drones_Op() > 0)
-				{
-					Random_Choose_and_Fight(55, 9.5, 0.5, 25, "Drones", "Op");
-					SubstractionOpponentDrones1();
+				else {
+					if (Get_Drones_Op() > 0)
+					{
+						Random_Choose_and_Fight(55, 9.5, 0.5, 25, "Drones", "Op");
+						SubstractionOpponentDrones1();
+					}
+					if (Get_Drones_My() > 0)
+					{
+						Random_Choose_and_Fight(55, 9.5, 0.5, 25, "Drones", "My");
+						SubstractionMyDrones1();
+					}					
 				}
 			}
+			Parse();
 		}
 		//Tanks
 		for (int i = 0; (i <= Get_Tanks_My() || i <= Get_Tanks_Op()); i++)
 		{
-			if (i <= Get_Tanks_My())			
-				Random_Choose_and_Fight(55, 15, 0, 30, "Tanks", "My");			
-			if (i <= Get_Tanks_Op())			
-				Random_Choose_and_Fight(55, 15, 0, 30, "Tanks", "Op");			
+			random_num = range(gen);
+			if (random_num == 1)
+			{
+				if (i <= Get_Tanks_My())
+					Random_Choose_and_Fight(55, 15, 0, 30, "Tanks", "My");
+				if (i <= Get_Tanks_Op())
+					Random_Choose_and_Fight(55, 15, 0, 30, "Tanks", "Op");
+			}
+			else {
+				if (i <= Get_Tanks_Op())
+					Random_Choose_and_Fight(55, 15, 0, 30, "Tanks", "Op");
+				if (i <= Get_Tanks_My())
+					Random_Choose_and_Fight(55, 15, 0, 30, "Tanks", "My");
+			}
 		}
 		//Vehicle
 		for (int i = 0; (i <= Get_Vehicles_My() || i <= Get_Vehicles_Op()); i++)
 		{
-			if (i <= Get_Vehicles_My())			
-				Random_Choose_and_Fight(10, 50, 1, 39, "Armored vehicles", "My");			
-			if (i <= Get_Vehicles_Op())			
-				Random_Choose_and_Fight(10, 50, 1, 39, "Armored vehicles", "Op");			
+			random_num = range(gen);
+			if (random_num == 1)
+			{
+				if (i <= Get_Vehicles_My())
+					Random_Choose_and_Fight(10, 50, 1, 39, "Armored vehicles", "My");
+				if (i <= Get_Vehicles_Op())
+					Random_Choose_and_Fight(10, 50, 1, 39, "Armored vehicles", "Op");
+			}
+			else {
+				if (i <= Get_Vehicles_Op())
+					Random_Choose_and_Fight(10, 50, 1, 39, "Armored vehicles", "Op");
+				if (i <= Get_Vehicles_My())
+					Random_Choose_and_Fight(10, 50, 1, 39, "Armored vehicles", "My");
+			}						
 		}
+		if ((Time % 15 == 0) && (MyBaseTeam_Check() || OpponentBaseTeam_Check())) 
+			Neutral_Allocate();		
 		if (Time % 5 == 0) {
 			cout << endl;
 			printMaps();
 			//std::this_thread::sleep_for(std::chrono::seconds(5));
 		}
-		//aaaaaaaaaaaa
-		if (Time % 15 == 0)		
-			Neutral_Allocate();	
-
 	}
-	return MyTeam_Check();
+	return make_tuple(MyTeam_Check(), Time);
 }
 
 void Simulation::Random_Choose_and_Fight(float Tanks,float Shooters, float Drones, float Vehicle,string Name_Fight, string Team) {

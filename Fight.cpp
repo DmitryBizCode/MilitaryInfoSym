@@ -88,10 +88,14 @@ void F::printMaps() {
     for (const auto& pair : opponentMap) {
         cout << pair.first << ": " << pair.second << endl;
     }
+    cout << "\nMy Map:" << endl;
+    for (const auto& pair : myBase) {
+        cout << pair.first << ": " << pair.second << endl;
+    }
 }
 
 
-//перевооружения
+//Update
 void F::Parse() {
     if (myMap["Shooter"] >= (myBase["Tanks"] * 4 + myBase["Drones"] + myBase["Armored vehicles"] * 3))
     {
@@ -168,32 +172,27 @@ void  F::Check_Parse(map<string, int>& Map, map<string, int>& Base) {
 
 
 //Neutral
-void F::Push_To_Neutral_MyBase() {
-    Neutral["Tanks"] += myBase["Tanks"];
-    Neutral["Drones"] += myBase["Drones"];
-    Neutral["Armored vehicles"] += myBase["Armored vehicles"];
-    myBase["Tanks"] = 0;
-    myBase["Drones"] = 0;
-    myBase["Armored vehicles"] = 0;
-}
-void F::Push_To_Neutral_OpponentBase() {
-    Neutral["Tanks"] += opponentBase["Tanks"];
-    Neutral["Drones"] += opponentBase["Drones"];
-    Neutral["Armored vehicles"] += opponentBase["Armored vehicles"];
-    opponentBase["Tanks"] = 0;
-    opponentBase["Drones"] = 0;
-    opponentBase["Armored vehicles"] = 0;
+void F::Push_To_Neutral_Base(map<string, int>& Neutral, map<string, int>& Base) {
+    Neutral["Tanks"] += Base["Tanks"];
+    Neutral["Drones"] += Base["Drones"];
+    Neutral["Armored vehicles"] += Base["Armored vehicles"];
+    Base["Tanks"] = 0;
+    Base["Drones"] = 0;
+    Base["Armored vehicles"] = 0;
 }
 
 //перегрупування
-bool F::Neutral_Check() {
-    return ((Neutral["Tanks"] + Neutral["Drones"] + Neutral["Armored vehicles"]) > 0) ? true : false;
-}
 bool F::MyTeam_Check() {
     return ((myMap["Tanks"] + myMap["Drones"] + myMap["Armored vehicles"] + myMap["Shooter"]) > 0) ? true : false;
 }
+bool F::MyBaseTeam_Check() {
+    return ((myBase["Tanks"] + myBase["Drones"] + myBase["Armored vehicles"] + myBase["Shooter"]) > 0) ? true : false;
+}
 bool F::OpponentTeam_Check() {
     return ((opponentMap["Tanks"] + opponentMap["Drones"] + opponentMap["Armored vehicles"] + opponentMap["Shooter"]) > 0) ? true : false;
+}
+bool F::OpponentBaseTeam_Check() {
+    return ((myMap["Tanks"] + myMap["Drones"] + myMap["Armored vehicles"] + myMap["Shooter"]) > 0) ? true : false;
 }
 
 //Get
@@ -225,6 +224,8 @@ int F::Get_Vehicles_Op() {
 
 //Allocate
 void F::Neutral_Allocate() {
+    Push_To_Neutral_Base(Neutral, myBase);
+    Push_To_Neutral_Base(Neutral, opponentBase);
     if (myMap["Shooter"] > 0)    
         Check_Parse(myMap, Neutral);
     
