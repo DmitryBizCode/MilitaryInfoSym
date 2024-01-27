@@ -100,11 +100,11 @@ void F::Parse() {
     if (myMap["Shooter"] >= (myBase["Tanks"] * 4 + myBase["Drones"] + myBase["Armored vehicles"] * 3))
     {
         myMap["Shooter"] -= (myBase["Tanks"] * 4 + myBase["Drones"] + myBase["Armored vehicles"] * 3);
-        myMap["Tanks"] = myBase["Tanks"];
+        myMap["Tanks"] += myBase["Tanks"];
         myBase["Tanks"] = 0;
-        myMap["Drones"] = myBase["Drones"];
+        myMap["Drones"] += myBase["Drones"];
         myBase["Drones"] = 0;
-        myMap["Armored vehicles"] = myBase["Armored vehicles"];
+        myMap["Armored vehicles"] += myBase["Armored vehicles"];
         myBase["Armored vehicles"] = 0;
     }
     else
@@ -113,11 +113,11 @@ void F::Parse() {
     if (opponentMap["Shooter"] >= (opponentBase["Tanks"] * 4 + opponentBase["Drones"] + opponentBase["Armored vehicles"] * 3))
     {
         opponentMap["Shooter"] -= (opponentBase["Tanks"] * 4 + opponentBase["Drones"] + opponentBase["Armored vehicles"] * 3);
-        opponentMap["Tanks"] = opponentBase["Tanks"];
+        opponentMap["Tanks"] += opponentBase["Tanks"];
         opponentBase["Tanks"] = 0;
-        opponentMap["Drones"] = opponentBase["Drones"];
+        opponentMap["Drones"] += opponentBase["Drones"];
         opponentBase["Drones"] = 0;
-        opponentMap["Armored vehicles"] = opponentBase["Armored vehicles"];
+        opponentMap["Armored vehicles"] += opponentBase["Armored vehicles"];
         opponentBase["Armored vehicles"] = 0;
     }
     else
@@ -192,7 +192,7 @@ bool F::OpponentTeam_Check() {
     return ((opponentMap["Tanks"] + opponentMap["Drones"] + opponentMap["Armored vehicles"] + opponentMap["Shooter"]) > 0) ? true : false;
 }
 bool F::OpponentBaseTeam_Check() {
-    return ((myMap["Tanks"] + myMap["Drones"] + myMap["Armored vehicles"] + myMap["Shooter"]) > 0) ? true : false;
+    return ((opponentBase["Tanks"] + opponentBase["Drones"] + opponentBase["Armored vehicles"] + opponentBase["Shooter"]) > 0) ? true : false;
 }
 
 //Get

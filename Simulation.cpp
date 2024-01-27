@@ -8,6 +8,10 @@ tuple<bool, int> Simulation::Sim() {
 
 	while (MyTeam_Check() && OpponentTeam_Check())
 	{
+		if (Time % 16 == 0)
+		{
+			cout << endl;
+		}
 		Time++;
 		cout << Time<<endl;
 		//shooter
@@ -63,8 +67,12 @@ tuple<bool, int> Simulation::Sim() {
 			Parse();
 		}
 		//Tanks
+		
 		for (int i = 0; (i <= Get_Tanks_My() || i <= Get_Tanks_Op()); i++)
 		{
+			int a = Get_Tanks_My();
+			int b = Get_Tanks_Op();
+
 			random_num = range(gen);
 			if (random_num == 1)
 			{
@@ -100,7 +108,7 @@ tuple<bool, int> Simulation::Sim() {
 		}
 		if ((Time % 15 == 0) && (MyBaseTeam_Check() || OpponentBaseTeam_Check())) 
 			Neutral_Allocate();		
-		if (Time % 5 == 0) {
+		if (Time % 1 == 0) {
 			cout << endl;
 			printMaps();
 			//std::this_thread::sleep_for(std::chrono::seconds(5));

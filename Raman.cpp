@@ -20,8 +20,8 @@ int main()
     Simulation S("Plain");
     Fight F;
 
-    F.AddOP(10, 80, 4, 5);
-    F.AddMY(0, 20, 201, 0);
+    F.AddOP(0, 300, 0, 0);
+    F.AddMY(100, 20, 80, 0);
     F.Parse();
     F.printMaps();
     S.Sim();
