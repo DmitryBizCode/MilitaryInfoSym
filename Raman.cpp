@@ -10,13 +10,14 @@
 #include "Fight.h"
 #include "Filtration.h"
 #include "Simulation.h"
+#include <vector>
 
 
 using namespace std;
 int main()
 {
     
-    
+    /*
     Simulation S("Plain");
     Fight F;
 
@@ -25,7 +26,7 @@ int main()
     F.Parse();
     F.printMaps();
     S.Sim();
-    F.printMaps();
+    F.printMaps();*/
 
 
     /*
@@ -103,8 +104,12 @@ int main()
     else
         cout << "Такого номеру не знайдено в файлі JSON." << endl;
         */
-    //Filtration fil("data.json");
-    //fil.PrintObjectsWithGreaterThan(60, 0);
+    Filtration fil("data.json");
+    vector<string> arr_filtr;
+    arr_filtr = fil.PrintObjectsWithGreaterThan(60, 0);
+    for (const auto& element : arr_filtr) {
+        cout << element << endl;
+    }
     //
     // 
     // 
